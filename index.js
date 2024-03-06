@@ -29,10 +29,17 @@ if (logOutput) console.log(sourceArray)
 
 // process source array for markdown
 const md = sourceArray.map(source => {
-    return `
+    if (source.src.length > 0) {
+        return `
+${source.title}
+${source.src.join('\n\n')}
+`
+    } else {
+        return `
 ${source.title}
 ${source.src.join('\n')}
 `
+    }
 })
 
 // write to file
